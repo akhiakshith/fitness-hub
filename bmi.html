@@ -1,75 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>BMI Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator — Fitness Hub</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' stroke='%23ff5f38' stroke-width='8' fill='none' filter='drop-shadow(0px 0px 8px %23ff5f38)'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #090a0f;
+            --card-bg: #121318;
+            --border-color: #1f2229;
+            --accent-orange: #ff5f38;
+            --accent-glow: rgba(255, 95, 56, 0.2);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #B9B6B3;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+
         .container {
-            border-style: solid;
-            border-color: black;
-            border-collapse: collapse;
-            border-radius: 4px;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            max-width: 440px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
         }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
+
         label {
             display: block;
-            margin-bottom: 10px;
-            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+
         input[type="number"] {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px 16px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+            margin-bottom: 20px;
         }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
         button {
             display: block;
             width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #6d6c6a;
-            color: #fff;
-            font-size: 16px;
+            padding: 14px;
+            background-color: var(--accent-orange);
+            color: var(--bg-dark);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 10px;
         }
+
         button:hover {
-            background-color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--accent-glow);
         }
+
+        .result-box {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         #result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-orange);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>BMI Calculator</h1>
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" placeholder="Enter weight in kilograms" />
-        <br />
-        <label for="height">Height (cm):</label>
-        <input type="number" id="height" placeholder="Enter height in centimeters" />
-        <br />
+        
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" placeholder="e.g. 70" />
+        
+        <label for="height">Height (cm)</label>
+        <input type="number" id="height" placeholder="e.g. 175" />
+        
         <button onclick="calculateBMI()">Calculate BMI</button>
-        <br />
-        <h2>Result:</h2>
-        <div id="result"></div>
+        
+        <div class="result-box">
+            <h2>Result:</h2>
+            <div id="result">Enter details above to calculate.</div>
+        </div>
+
+        <a href="fitnesshub.html" class="back-link">← Back to Dashboard</a>
     </div>
 
     <script>
@@ -89,14 +178,14 @@
             var bmi = weight / (height * height);
             var category = getBMICategory(bmi);
 
-            resultDiv.textContent = "Your BMI is " + bmi.toFixed(2) + " - " + category;
+            resultDiv.innerHTML = "Your BMI is <span style='font-size: 1.4rem; font-weight: 700; color: var(--text-primary);'>" + bmi.toFixed(1) + "</span> — <span style='color: var(--accent-orange); font-weight: 700;'>" + category + "</span>";
         }
 
         function getBMICategory(bmi) {
             if (bmi < 18.5) {
                 return "Underweight";
             } else if (bmi >= 18.5 && bmi < 25) {
-                return "Normal weight";
+                return "Normal Weight";
             } else if (bmi >= 25 && bmi < 30) {
                 return "Overweight";
             } else {

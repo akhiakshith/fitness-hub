@@ -1,37 +1,29 @@
-<html>
-<title>Fitness Hub</title>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Hub — Interactive Body Scanner & Workout Planner</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' stroke='%23ff5f38' stroke-width='8' fill='none' filter='drop-shadow(0px 0px 8px %23ff5f38)'/></svg>">
     <link rel="stylesheet" type="text/css" href="style1.css">
-    <style>
-#bmi,#cal{
-    font-weight: 900;
-}
-.foot{
-    font-size: 20px;
-    color:white;
-    display: inline-block;
-}
-#cop{
-    color:aquamarine;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-}
-    </style>
     <script src="script.js"></script>
-</head><body>
-    <div id="menubar">
-        <a href="fitnesshub.html"><img  id="logo" src="logo1.png" alt="logo"></a><div id="buttons"><table id="top">
-       <tr><td style="width: 500px;"><a href="calorie.html"><p id="cal" style="font-size: 25px;">Calorie calculator</p></a></td>
-        <td style="width: 600px;"><a id="buttons1" href="bmi.html"><p id="bmi" style="font-size: 25px;">BMI calculator</p></a></td>
-        <td style="width: 600px;"><a id="buttons1" href="login1.html"><p id="login1" style="font-size: 25px;">About US</p></a></td>
-        <td style="margin-left: 300px;" ><a id="login" href="login.html"><img id="loginprofile" src="loginprofile.png"></a></td>
-         </tr> </table></div>
-        
-    </div>
-    <div><img  id="img2" src="Group 11.png" usemap="#image1-map">
-        <img  id="img1" src="Group 8.png" usemap="#image-map">
+</head>
+<body>
+    <header id="menubar">
+        <a href="fitnesshub.html"><img id="logo" src="logo1.png" alt="Fitness Hub Logo"></a>
+        <nav id="buttons">
+            <div id="top">
+                <a href="calorie.html">Calorie Calculator</a>
+                <a href="bmi.html">BMI Calculator</a>
+                <a href="login.html">About US</a>
+                <a id="login" href="login.html"><img id="loginprofile" src="loginprofile.png" alt="Profile"></a>
+            </div>
+        </nav>
+    </header>
+    <main id="body-container">
+        <img id="img2" src="Group 11.png" usemap="#image1-map" alt="Female Anatomy Map">
+        <img id="img1" src="Group 8.png" usemap="#image-map" alt="Male Anatomy Map">
+    </main>
 
 
 <map name="image-map">
